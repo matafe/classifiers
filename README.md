@@ -1,7 +1,7 @@
 CEDSIF Classifiers Module
 =========================
 
-Author: Mauricio T. Ferraz
+Author: Mauricio T. Ferraz.
 
 What is it?
 
