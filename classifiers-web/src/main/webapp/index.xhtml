@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h1>Classificadores.</h1>
+
+		<h:form id="create">
+			<h2>Cadastro</h2>
+			<h:panelGrid columns="3" columnClasses="titleCell">
+
+				<h:outputLabel for="classifierType" value="Tipo:" />
+				<h:selectOneMenu id="classifierType"
+					value="#{classifierFormBean.type}" >
+					<f:selectItems value="#{classifierController.classifierTypes}" />
+				</h:selectOneMenu>
+				<h:message for="classifierType" errorClass="invalid" />
+
+				<h:outputLabel for="code" value="Código:" />
+				<h:inputText id="code" value="#{classifierFormBean.code}"/>
+				<h:message for="code" errorClass="invalid" />
+
+				<h:outputLabel for="description" value="Descrição:" />
+				<h:inputText id="description" value="#{classifierFormBean.description}"/>
+				<h:message for="description" errorClass="invalid" />
+
+				<h:outputLabel for="remarks" value="Comentário:" />
+				<h:inputText id="remarks" value="#{classifierFormBean.remarks}" />
+				<h:message for="remarks" errorClass="invalid" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<h:commandButton id="create"
+					action="#{classifierController.createClassifier}" value="Criar"
+					styleClass="create" />
+				<h:messages styleClass="messages" errorClass="invalid"
+					infoClass="valid" warnClass="warning" globalOnly="true" />
+			</h:panelGrid>
+		</h:form>
+
+		<h:form id="searchForm">
+			<h2>Busca</h2>
+			<h:panelGrid columns="3" columnClasses="titleCell">
+				<h:outputLabel for="classifierType" value="Tipo:" />
+				<h:selectOneMenu id="classifierType"
+					value="#{classifierFormBean.type}" >
+					<f:selectItems value="#{classifierController.classifierTypes}" />
+				</h:selectOneMenu>
+				<h:message for="classifierType" errorClass="invalid" />
+
+				<h:outputLabel for="codeToSearch" value="Código:" />
+				<h:inputText id="codeToSearch"
+					value="#{classifierController.codeToSearch}" />
+				<h:message for="codeToSearch" errorClass="invalid" />
+			</h:panelGrid>
+
+			<h:commandButton id="search"
+				action="#{classifierController.searchClassifier}" value="Buscar"
+				styleClass="search" />
+		</h:form>
+		<h2>Classifiers</h2>
+		<h:panelGroup rendered="#{empty classifiers}">
+			<em>No classifier found.</em>
+		</h:panelGroup>
+		<h:dataTable var="_classifier" value="#{classifiers}"
+			rendered="#{not empty classifiers}" styleClass="simpletablestyle">
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+                #{_classifier.id}
+            </h:column>
+			<h:column>
+				<f:facet name="header">Tipo</f:facet>
+                #{_classifier.type}
+            </h:column>
+			<h:column>
+				<f:facet name="header">Código</f:facet>
+                #{_classifier.code}
+            </h:column>
+			<h:column>
+				<f:facet name="header">Descrição</f:facet>
+                #{_classifier.description}
+            </h:column>
+			<h:column>
+				<f:facet name="header">Comentário</f:facet>
+                #{_classifier.remarks}
+            </h:column>
+			<h:column>
+				<f:facet name="header">REST URL (id)</f:facet>
+				<a href="#{request.contextPath}/rest/classifiers/#{_classifier.id}">/rest/classifiers/#{_classifier.id}</a>
+			</h:column>
+			<h:column>
+				<f:facet name="header">REST URL (type/code)</f:facet>
+				<a
+					href="#{request.contextPath}/rest/classifiers/#{_classifier.type}/#{_classifier.code}">/rest/classifiers/#{_classifier.type}/#{_classifier.code}</a>
+			</h:column>
+			<f:facet name="footer">
+            REST URL para todos Classificadores: <a
+					href="#{request.contextPath}/rest/classifiers">/rest/classifiers</a>
+			</f:facet>
+		</h:dataTable>
+	</ui:define>
+</ui:composition>
