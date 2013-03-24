@@ -38,7 +38,12 @@ Debug the Application
 mvn dependency:sources
 mvn dependency:resolve -Dclassifier=javadoc
 
+Git Tips:
+Making code changes:
 
+git add .
+git commit -m 'My changes'
+git push
 
 AS7 Tips:
 To start a cluster env... on standalone mode:
