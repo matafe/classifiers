@@ -5,4 +5,5 @@ target
 MANIFEST.MF
 .idea
 admin.txt
+deployments
 *.iml

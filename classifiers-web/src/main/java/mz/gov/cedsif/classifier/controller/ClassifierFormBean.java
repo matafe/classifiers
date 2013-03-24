@@ -1,8 +1,6 @@
 
 package mz.gov.cedsif.classifier.controller;
 
-import com.sun.istack.internal.NotNull;
-
 /**
  * Defines a Classifier Bean for Screen
  * 
@@ -10,12 +8,11 @@ import com.sun.istack.internal.NotNull;
  */
 public class ClassifierFormBean
 {
-	@NotNull
+
 	private String code;
 
 	private String description;
 
-	@NotNull
 	private String type;
 
 	private String remarks;

@@ -8,13 +8,18 @@
 	<datasource jndi-name="java:jboss/datasources/classifiersDS"
 		pool-name="classifiers" enabled="true" use-java-context="true">
 		<!-- for in-memory database -->
-		<!-- <connection-url>jdbc:h2:mem:classifiers;DB_CLOSE_DELAY=-1</connection-url> -->
+	   <connection-url>jdbc:h2:mem:classifiers;DB_CLOSE_DELAY=-1</connection-url>
+		<!--
+		<connection-url>jdbc:h2:file:${jboss.server.data.dir}/classifiers;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090</connection-url>
 		<connection-url>jdbc:h2:file:~/tmp/classifiers;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090</connection-url>
+		-->
 		<driver>h2</driver>
 		<security>
 			<user-name>sa</user-name>
 			<password>sa</password>
 		</security>
+		 
+
 	</datasource>
 </datasources>
  
