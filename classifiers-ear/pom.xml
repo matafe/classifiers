@@ -93,6 +93,7 @@
 						<version>${ear.plugin.version}</version>
 						<configuration>
 							<outputDirectory>deployments</outputDirectory>
+							<finalName>ROOT</finalName>
 						</configuration>
 					</plugin>
 				</plugins>
